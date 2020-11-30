@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Keep Doing - Xuelin Shi(N01349246)</string>
+
+
+    <string name="activity_main_search_hint">Search</string>
+    <string name="activity_main_tab_todo">TODO</string>
+    <string name="activity_main_tab_overdue">OVERDUE</string>
+    <string name="activity_main_tab_done">DONE</string>
+
+    <string name="activity_detail_title_label">Title</string>
+    <string name="activity_detail_due_date_label">Due Date</string>
+    <string name="activity_detail_due_time_label">Due Time</string>
+    <string name="activity_detail_pick_date_label">Pick Date</string>
+    <string name="activity_detail_pick_time_label">Pick Time</string>
+    <string name="activity_detail_reminder">Reminder (Before)</string>
+    <string name="activity_detail_minutes">Minutes</string>
+    <string name="activity_detail_hours">Hours</string>
+    <string name="activity_detail_days">Days</string>
+    <string name="activity_detail_weeks">Weeks</string>
+
+    <string name="activity_detail_button_add">Add Schedule</string>
+    <string name="activity_detail_button_update">Update</string>
+    <string name="activity_detail_button_done">DONE</string>
+    <string name="activity_detail_button_dismiss">Dismiss</string>
+
+
+    <string name="notification_channel_name">Keep Doing</string>
+</resources>
