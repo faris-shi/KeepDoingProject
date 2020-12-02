@@ -8,7 +8,7 @@ import android.os.Looper
 import project.n01349246.xuelin.util.MiscUtil
 
 class SplashScreenActivity : AppCompatActivity() {
-    private val SPLASH_TIME_OUT: Long = 3000 // 1 sec
+    private val SPLASH_TIME_OUT: Long = 3000 // 3 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

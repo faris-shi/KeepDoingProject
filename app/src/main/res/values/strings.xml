@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Keep Doing - Xuelin Shi(N01349246)</string>
+    <string name="app_name">Keep Doing</string>
 
-
+    <string name="activity_main_title">Keep Doing - Xuelin Shi(N01349246)</string>
     <string name="activity_main_search_hint">Search</string>
     <string name="activity_main_tab_todo">TODO</string>
     <string name="activity_main_tab_overdue">OVERDUE</string>

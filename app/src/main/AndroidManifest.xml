@@ -3,6 +3,7 @@
     package="project.n01349246.xuelin">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,17 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/KeepDoingProjectTheme">
-
-
+        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".AboutActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".ScheduleDetailActivity" />
         <activity android:name=".MainActivity" />
-
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/KeepDoingProjectTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -30,10 +30,10 @@ class MiscUtil {
             val alarmIntent = Intent(context, AlarmReceiver::class.java).let { intent ->
                 PendingIntent.getBroadcast(context, 0, intent, 0)
             }
-            alarmMgr?.setRepeating(
+            alarmMgr.setRepeating(
                 AlarmManager.RTC_WAKEUP,
                 System.currentTimeMillis() + 1 * 1000,
-                1000 * 60,
+                1000 * 5,
                 alarmIntent
             )
 

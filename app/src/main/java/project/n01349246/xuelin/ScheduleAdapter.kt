@@ -79,7 +79,6 @@ class ScheduleAdapter(
         private fun getBackgroundColor(status: ScheduleStatus, days: Int): Int {
             return when {
                 status == ScheduleStatus.DONE -> ContextCompat.getColor(context, R.color.blue)
-                status == ScheduleStatus.DISMISSED -> ContextCompat.getColor(context, R.color.black)
                 status == ScheduleStatus.OVERDUE -> ContextCompat.getColor(context, R.color.red)
                 days <= 2 -> Color.parseColor(pref.getString("HIGH_LEVEL", "#C82013"))
                 days in 3..7 -> Color.parseColor(pref.getString("MEDIUM_LEVEL", "#F69505"))
@@ -89,7 +88,7 @@ class ScheduleAdapter(
         }
 
         private fun formatDate(dueDate: LocalDateTime, days: Int): String {
-            val format: String = if (days == -1) {
+            val format = if (days == -1) {
                 "Yesterday"
             } else if (days == 0) {
                 "Today"

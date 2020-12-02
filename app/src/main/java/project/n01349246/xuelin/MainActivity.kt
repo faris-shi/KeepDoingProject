@@ -20,7 +20,7 @@ import project.n01349246.xuelin.util.MiscUtil
 import kotlin.collections.ArrayList
 
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
     private var data = ArrayList<Schedule>()
 
@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         database = ScheduleDatabase.getInstance(applicationContext)
+        this.setTitle(R.string.activity_main_title)
 
         val pref = getSharedPreferences("keep_doing", Context.MODE_PRIVATE)
         adapter = ScheduleAdapter(this, data, pref)
@@ -97,8 +98,18 @@ class MainActivity : AppCompatActivity(){
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.setting -> {
+            R.id.change_color -> {
                 val intent = Intent(this, SettingActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.about -> {
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+            R.id.help -> {
+                val intent = Intent(this, HelpActivity::class.java)
                 startActivity(intent)
                 return true
             }
