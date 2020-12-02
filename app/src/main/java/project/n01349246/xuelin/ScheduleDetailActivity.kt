@@ -50,8 +50,10 @@ class ScheduleDetailActivity : AppCompatActivity() {
 
         if (id == 0L) {
             binding.updateBtns.visibility = View.GONE
+            this.title = "Add Schedule"
         } else {
             binding.btnAdd.visibility = View.GONE
+            this.title = "Modify Schedule"
         }
 
         if (id != 0L) {
@@ -176,59 +178,41 @@ class ScheduleDetailActivity : AppCompatActivity() {
     }
 
     private fun checkValue(): Boolean {
-        val error = R.drawable.rounded_border_text_edit_error
-        val correct = R.drawable.rounded_border_text_edit
 
+        binding.title.error = null
         if (binding.title.text.isBlank()) {
             binding.title.error = "title required!"
-            binding.title.setBackgroundResource(error)
             binding.title.requestFocus()
             return false
-        } else {
-            binding.title.error = null
-            binding.title.setBackgroundResource(correct)
         }
 
-
+        binding.dueDate.error = null
         if (binding.dueDate.text.isBlank()) {
             binding.dueDate.error = "due date required!"
-            binding.dueDate.setBackgroundResource(error)
             binding.dueDate.requestFocus()
             return false
-        } else {
-            binding.dueDate.error = null
-            binding.dueDate.setBackgroundResource(correct)
         }
 
+        binding.dueTime.error = null
         if (binding.dueTime.text.isBlank()) {
             binding.dueTime.error = "due time required!"
-            binding.dueTime.setBackgroundResource(error)
             binding.dueTime.requestFocus()
             return false
-        } else {
-            binding.dueTime.error = null
-            binding.dueTime.setBackgroundResource(correct)
         }
 
+        binding.dueDate.error = null
         val date = LocalDate.parse(binding.dueDate.text.toString(), MiscUtil.DATE_FORMATTER)
         if (LocalDate.now().isAfter(date)) {
             binding.dueDate.error = "due date must be greater than now"
-            binding.dueDate.setBackgroundResource(error)
             binding.dueDate.requestFocus()
             return false
-        } else {
-            binding.dueDate.error = null
-            binding.dueDate.setBackgroundResource(correct)
         }
 
+        binding.remindNum.error = null
         if (binding.remindNum.text.isBlank()) {
             binding.remindNum.error = "reminder required!"
-            binding.remindNum.setBackgroundResource(error)
             binding.remindNum.requestFocus()
             return false
-        } else {
-            binding.remindNum.error = null
-            binding.remindNum.setBackgroundResource(correct)
         }
         return true
     }

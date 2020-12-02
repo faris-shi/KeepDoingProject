@@ -26,6 +26,7 @@ class SettingActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_setting)
         pref = getSharedPreferences("keep_doing", Context.MODE_PRIVATE)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        this.title = "Setting"
 
         lowLevel = pref.getString("LOW_LEVEL", "#1D8A9C").toString()
         when (lowLevel) {

@@ -1,6 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/setting"
+        android:id="@+id/change_color"
         android:title="Change Color" />
+
+    <item
+        android:id="@+id/about"
+        android:title="About" />
+    <item
+        android:id="@+id/help"
+        android:title="Help" />
 </menu>
