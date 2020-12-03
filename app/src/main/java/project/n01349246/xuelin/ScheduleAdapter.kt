@@ -67,13 +67,11 @@ class ScheduleAdapter(
             val text =
                 when (status) {
                     ScheduleStatus.TODO -> "Due"
-                    ScheduleStatus.DONE -> "Done"
-                    ScheduleStatus.OVERDUE -> "Overdue"
-                    ScheduleStatus.DISMISSED -> "Dismissed"
+                    else -> ""
                 }
 
             view.restDay.setBackgroundColor(getBackgroundColor(status, days))
-            view.restDay.text = "$text ${formatDate(dueDate, days)}"
+            view.restDay.text = "$text ${formatDate(status, dueDate, days)}"
         }
 
         private fun getBackgroundColor(status: ScheduleStatus, days: Int): Int {
@@ -87,7 +85,11 @@ class ScheduleAdapter(
             }
         }
 
-        private fun formatDate(dueDate: LocalDateTime, days: Int): String {
+        private fun formatDate(status: ScheduleStatus, dueDate: LocalDateTime, days: Int): String {
+            if (status != ScheduleStatus.TODO) {
+                return dueDate.toString(MiscUtil.DATETIME_FORMATTER)
+            }
+
             val format = if (days == -1) {
                 "Yesterday"
             } else if (days == 0) {

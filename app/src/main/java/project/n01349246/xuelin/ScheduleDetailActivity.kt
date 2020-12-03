@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -30,15 +31,13 @@ class ScheduleDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityScheduleDetailBinding
 
-    private var id: Long? = null
+    private lateinit var database: ScheduleDatabase
 
-    private var reminderStatus: ReminderStatus = ReminderStatus.NONE
+    private var id: Long? = null
 
     private var status: ScheduleStatus = ScheduleStatus.TODO
 
     private var reminderUnit = ReminderUnit.HOUR
-
-    private lateinit var database: ScheduleDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +46,8 @@ class ScheduleDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         id = intent.getLongExtra("ID", 0L)
+
+        Log.i("Faris", "id: $id")
 
         if (id == 0L) {
             binding.updateBtns.visibility = View.GONE
@@ -57,7 +58,7 @@ class ScheduleDetailActivity : AppCompatActivity() {
         }
 
         if (id != 0L) {
-            fillUp()
+            fillUp(savedInstanceState)
         }
 
         binding.btnAdd.setOnClickListener {
@@ -160,6 +161,7 @@ class ScheduleDetailActivity : AppCompatActivity() {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+
         binding.title.setText(savedInstanceState.getCharSequence("title"))
         binding.dueDate.setText(savedInstanceState.getCharSequence("dueDate"))
         binding.dueTime.setText(savedInstanceState.getCharSequence("dueTime"))
@@ -176,6 +178,14 @@ class ScheduleDetailActivity : AppCompatActivity() {
             binding.updateBtns.visibility = View.GONE
         }
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+        }
+        return true
+    }
+
 
     private fun checkValue(): Boolean {
 
@@ -238,13 +248,16 @@ class ScheduleDetailActivity : AppCompatActivity() {
             remindDate,
             remindNum,
             reminderUnit,
-            reminderStatus,
+            ReminderStatus.NONE,
             ScheduleStatus.TODO
         )
     }
 
 
-    private fun fillUp() {
+    private fun fillUp(bundle: Bundle?) {
+        if (bundle?.getCharSequence("title") != null) {
+            return
+        }
         doAsync {
             val schedule = database.scheduleDAO().findById(id!!)
             uiThread {
@@ -262,7 +275,6 @@ class ScheduleDetailActivity : AppCompatActivity() {
                 }
 
                 status = schedule.status
-                reminderStatus = schedule.reminderStatus
             }
         }
     }
@@ -304,10 +316,5 @@ class ScheduleDetailActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(editText.windowToken, 0)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> finish()
-        }
-        return true
-    }
+
 }

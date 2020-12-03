@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import project.n01349246.xuelin.databinding.ActivitySettingBinding
+import project.n01349246.xuelin.databinding.ActivityColorBinding
 
-class SettingActivity : AppCompatActivity() {
+class ColorActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySettingBinding
+    private lateinit var binding: ActivityColorBinding
 
     private lateinit var pref: SharedPreferences
 
@@ -23,10 +23,10 @@ class SettingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_setting)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_color)
         pref = getSharedPreferences("keep_doing", Context.MODE_PRIVATE)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        this.title = "Setting"
+        this.title = "Change Color"
 
         lowLevel = pref.getString("LOW_LEVEL", "#1D8A9C").toString()
         when (lowLevel) {

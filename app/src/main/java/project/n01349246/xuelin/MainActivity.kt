@@ -16,7 +16,6 @@ import project.n01349246.xuelin.database.ScheduleDatabase
 import project.n01349246.xuelin.databinding.ActivityMainBinding
 import project.n01349246.xuelin.model.Schedule
 import project.n01349246.xuelin.model.ScheduleStatus
-import project.n01349246.xuelin.util.MiscUtil
 import kotlin.collections.ArrayList
 
 
@@ -81,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.freshLayout?.setOnRefreshListener {
+        binding.freshLayout.setOnRefreshListener {
             displaySchedules()
         }
 
@@ -99,7 +98,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.change_color -> {
-                val intent = Intent(this, SettingActivity::class.java)
+                val intent = Intent(this, ColorActivity::class.java)
                 startActivity(intent)
                 return true
             }

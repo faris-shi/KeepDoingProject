@@ -14,7 +14,7 @@
         android:theme="@style/KeepDoingProjectTheme">
         <activity android:name=".HelpActivity"></activity>
         <activity android:name=".AboutActivity" />
-        <activity android:name=".SettingActivity" />
+        <activity android:name=".ColorActivity" />
         <activity android:name=".ScheduleDetailActivity" />
         <activity android:name=".MainActivity" />
         <activity
